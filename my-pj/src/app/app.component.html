@@ -1,0 +1,275 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+<div class="container_1">
+
+  <body>
+    <h5>Submit Tax Filing</h5>
+
+  </body>
+
+  <div class="progress-indicator" style=" margin-left: 230px;">
+    <div class="step active">
+      <div class="circle">1</div>
+      <div class="title">Input Tax</div>
+    </div>
+    <div class="connector"></div>
+    <div class="step">
+      <div class="circle">2</div>
+      <div class="title">Review & Confirm</div>
+    </div>
+  </div>
+
+  <div *ngIf="currentStep ===1">
+
+    <body>
+
+      <div class="container">
+        <div class="form-section">
+          <h3>1. Tax Filing Detail</h3>
+          <label for="vatMonth">
+            <h6>Type of filing <span class="text-danger">*</span></h6>
+          </label>
+          <div class="radio-group">
+            <input type="radio" checked id="ordinaryFiling" name="filingType" value="Ordinary">
+            <label for="ordinaryFiling" style="margin-top: 5px;">
+              <p>Ordinary Filing <i class="fas fa-question-circle"></i></p>
+            </label>
+            <input type="radio" id="additionalFiling" name="filingType" value="Additional" (click)="nextStep()">
+            <label for="additionalFiling" style="margin-top: 5px;">
+              <p>Additional Filing <i class="fas fa-question-circle"></i></p>
+            </label>
+          </div>
+          <div class="form-section" style="margin-top: -20px;">
+            <label for="vatMonth">
+              <h6>VAT Month <span class="text-danger">*</span></h6>
+            </label>
+            <div class="form-row" style="margin-top: -25px;">
+              <select id="vatMonth" style="text-align: left;" class="input_1 short" [(ngModel)]="selectedMonth">
+                <option *ngFor="let month of months; let i = index" [value]="i+1" [disabled]="isMonthDisabled(i+1)">
+                  {{ month }}
+                </option>
+              </select>
+              <select id="vatYear" style="text-align: left;" class="input_1 short" [(ngModel)]="selectedYear">
+                <option *ngFor="let year of years" [value]="year" [disabled]="year > currentYear">
+                  {{ year }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="form-section">
+          <h3>2. Tax Computation</h3>
+          <p href="#" style="text-decoration: underline; margin-left: 500px; margin-top: -4%;">View Exchange Rate</p>
+          <h6>Provide total value taxable electronic service <span class="text-danger">*</span></h6>
+
+          <div class="input-group">
+            <label for="taxableValue" class="input-label">
+              <p>1.Total value of taxable electronic service exclusive of VAT</p>
+            </label>
+            <input type="text" class="input_1 short" id="taxableValue" placeholder="THB"
+              (keypress)="handleKeyPress($event)" (input)="number($event)" (input)="calculateVat($event)">
+          </div>
+
+          <div class="input-group">
+            <label for="vatRemitted" class="input-label">
+              <p>2.Total VAT to be remitted (7% of 1.)</p>
+            </label>
+            <input type="text" disabled class="input_1 short" id="vatRemitted" placeholder="THB"
+              [(ngModel)]="vatRemittedValue">
+          </div>
+        </div>
+
+
+      </div>
+
+    </body>
+    <div class="buttons" style="margin-top: -37px;">
+      <button type="button">Back</button>
+      <button type="submit" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- ---------------------------------------------------------------------------------------------------------------- -->
+  <div *ngIf="currentStep ===2">
+
+    <body>
+
+      <div class="container">
+        <div class="form-section">
+          <h3>1. Tax Filing Detail</h3>
+          <label for="vatMonth">
+            <h6>VAT Month <span class="text-danger">*</span></h6>
+          </label>
+          <div class="radio-group">
+            <input type="radio" id="ordinaryFiling" name="filingType" value="Ordinary" (click)="prevStep()">
+            <label for="ordinaryFiling" style="margin-top: 5px;">
+              <p>Ordinary Filing <i class="fas fa-question-circle"></i></p>
+            </label>
+            <input type="radio" checked id="additionalFiling" name="filingType" value="Additional">
+            <label for="additionalFiling" style="margin-top: 5px;">
+              <p>Additional Filing <i class="fas fa-question-circle"></i></p>
+            </label>
+          </div>
+
+          <div class="monthvta">
+            <div class="form-section" style="margin-top: -20px;">
+              <label for="vatMonth">
+                <h6>VAT Month <span class="text-danger">*</span></h6>
+              </label>
+              <div class="form-row-1" style="margin-top: -25px;">
+                <select id="vatMonth" style="text-align: left;" class="input_1 " [(ngModel)]="selectedMonth">
+                  <option *ngFor="let month of months; let i = index" [value]="i+1" [disabled]="isMonthDisabled(i+1)">
+                    {{ month }}
+                  </option>
+                </select>
+                <select id="vatYear" style="text-align: left;" class="input_1 " [(ngModel)]="selectedYear">
+                  <option *ngFor="let year of years" [value]="year" [disabled]="year > currentYear">
+                    {{ year }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="" style="margin-top: -20px; margin-left: 90px;">
+              <label for="" style=" margin-left: 45px; ">
+                <h6>Type <span class="text-danger">*</span></h6>
+              </label>
+            </div>
+            <div class="form-row-2" style="margin-top: -25px;  width: 20%;   ">
+              <select id="" style="text-align: left;" class="input_1_1">
+                <option value="" disabled selected>One-Time</option>
+
+
+              </select>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+        <div class="form-section">
+
+          <h3>2. Tax Computation</h3>
+          <p href="#" style="text-decoration: underline; margin-left: 500px; margin-top: -4%; ">View Exchange Rate</p>
+          <h6>Provide total value taxable electronic service <span class="text-danger">*</span></h6>
+
+          <div class="input-group">
+            <label for="taxableValue" class="input-label">
+              <p>1.Total value of taxable electronic service exclusive of VAT</p>
+            </label>
+            <input type="text" class="input_1 short" id="taxableValue" placeholder="THB"
+              (keypress)="handleKeyPress($event)" (input)="number($event)" (input)="calculateVat($event)" (input)="calculateVatAndSurcharge($event)">
+          </div>
+
+          <div class="input-group">
+            <label for="vatRemitted" class="input-label">
+              <p>2.Total VAT to be remitted (7% of 1.)</p>
+            </label>
+            <input type="text" disabled class="input_1 short" id="vatRemitted" placeholder="THB" [(ngModel)]="vatRemittedValue">
+          </div>
+
+          <h6>ln case of late filling and payment,or additional filling </h6>
+
+          <div class="input-group">
+            <label for="taxableValue" class="input-label">
+              <p>3.Surcharge <i class="fas fa-question-circle"></i></p>
+            </label>
+            <input type="text" style="text-align: right;" disabled class="input_2 short" id="Surcharge" placeholder="0.00 THB" [value]="surchargeValue">
+          </div>
+
+          <div class="input-group">
+            <label for="vatRemitted" class="input-label">
+              <p>4.Penalty <i class="fas fa-question-circle"></i></p>
+            </label>
+            <input type="text" style="text-align: right;" disabled class="input_2 short" id="Penalty"
+              placeholder="0.00 THB" [value]="fixedPenalty">
+          </div>
+
+          <div class="input-group">
+            <label for="vatRemitted" class="input-label">
+              <p>5.Total amount of VAT, surcharge,and penalty to be remitted <br> (2.+3.+4.)</p>
+            </label>
+
+            <input type="text" style="text-align: right; margin-bottom: 20px;" disabled class="input_2 short" id="Total"
+              placeholder="0.00 THB">
+          </div>
+        </div>
+
+      </div>
+    </body>
+    <div class="buttons" style="margin-top: -37px;">
+      <button type="button" (click)="prevStep()">Back</button>
+      <button type="submit" (click)="nextStep()">Next</button>
+    </div>
+  </div>
+
+  <!-- ---------------------------------------------------------------------------------------------------------------- -->
+  <div *ngIf="currentStep ===3">
+
+    <body>
+      <div class="container">
+        <div class="header">
+        </div>
+        <div class="form-section">
+          <h3>Tax Filing Detail</h3>
+          <label for="vatMonth">
+            <h6>VAT Month <span class="text-danger">*</span></h6>
+          </label>
+          <div class="radio-group">
+            <input type="radio" checked id="ordinaryFiling" name="filingType" value="Ordinary">
+            <label for="ordinaryFiling" style="margin-top: 5px;">
+              <p>Ordinary Filing <i class="fas fa-question-circle"></i></p>
+            </label>
+            <input type="radio" id="additionalFiling" name="filingType" value="Additional">
+            <label for="additionalFiling" style="margin-top: 5px;">
+              <p>Additional Filing <i class="fas fa-question-circle"></i></p>
+            </label>
+          </div>
+
+          <h6>VAT Month <span class="text-danger">*</span></h6>
+
+
+
+        </div>
+
+        <div class="form-section">
+
+          <h3>Tax Computation</h3>
+
+
+
+
+          <h6>Total value of taxable electronic service exclusive of VAT</h6>
+
+
+
+          <h6>ln case of late filling and payment,or additional filling </h6>
+
+
+        </div>
+        <div class="form-section">
+          <h3>Declaration</h3>
+          <p>I hereby certify that information given above are true and correct and agree to be bound by such
+            information.
+          </p>
+        </div>
+
+
+
+      </div>
+    </body>
+    <div class="buttons" style="margin-top: -37px;">
+      <button type="button" (click)="prevStep()">Back</button>
+      <button type="submit">Next</button>
+    </div>
+
+  </div>
+</div>

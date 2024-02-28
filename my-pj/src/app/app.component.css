@@ -1,0 +1,313 @@
+/* styles.css or your component's css file */
+h5 {
+  font-size: 40px;
+  /* ปรับขนาดตามที่ต้องการ */
+  text-align: center;
+  /* ตรงกลางทั้งนอน */
+
+}
+
+h6 {
+  font-size: 13px;
+  /* ปรับขนาดตามที่ต้องการ */
+
+}
+
+p {
+  font-size: 13px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container_1 {
+  max-width: 680px;
+  margin: 20px auto;
+
+}
+
+.container {
+  max-width: 680px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-section {
+  margin-bottom: 20px;
+
+}
+
+.form-section h3 {
+  position: relative;
+  /* Needed for absolute positioning of the pseudo-element */
+  margin-bottom: 10px;
+  /* Spacing from the text to the line */
+
+}
+
+.form-section h3::after {
+  content: '';
+  /* Required for a pseudo-element */
+  display: block;
+  /* Treat the pseudo-element like a block */
+  height: 1px;
+  /* Thickness of the line */
+  background-color: #cccccc;
+  /* Color of the line */
+  position: absolute;
+  bottom: -5px;
+  /* Adjust the distance from the text */
+  left: 0;
+  right: 0;
+  width: 100%;
+  /* Adjust the length of the line */
+  margin: 0 auto;
+  /* This will center the line if it's not full-width */
+}
+.exchange-rate{
+  content: '';
+  /* Required for a pseudo-element */
+  display: block;
+  /* Treat the pseudo-element like a block */
+  height: 1px;
+  /* Thickness of the line */
+  background-color: #cccccc;
+  /* Color of the line */
+  position: absolute;
+  bottom: -5px;
+  /* Adjust the distance from the text */
+  left: 0;
+  right: 0;
+  width: 100%;
+  /* Adjust the length of the line */
+  margin: 0 auto;
+  /* This will center the line if it's not full-width */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+
+}
+
+input[ type="text"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.radio-group {
+  margin-top: -40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+}
+
+.radio-group input {
+  margin-right: 5px;
+}
+
+.radio-group label {
+  margin-right: 15px;
+}
+
+.buttons {
+
+  text-align: left;
+}
+
+button {
+  padding: 10px 30px;
+  margin: 5px;
+  border: none;
+  border-radius: 30px;
+  border: 1px solid #000;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.input_1 {
+  border: 1px solid #000;
+  width: 100%;
+  /* ปรับความกว้างตามที่คุณต้องการ */
+  margin-bottom: 10px;
+  /* ปรับความห่างระหว่างช่องใส่ข้อมูลตามที่คุณต้องการ */
+  box-sizing: border-box;
+  /* คำสั่งนี้จะทำให้ padding ไม่ไปกระทบกับความกว้างรวมของช่องใส่ข้อมูล */
+}
+
+/* เพื่อให้ช่องใส่ข้อมูลเรียงเป็นแถว */
+/* คลาสสำหรับกำหนดเลย์เอาต์ของช่องใส่ข้อมูล */
+.form-row {
+  margin-top: -12px;
+  /* width: 150%; ช่องใส่ข้อมูลมีความกว้างน้อย */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* เริ่มจากด้านซ้าย หากต้องการจัดเรียงแนวนอน */
+  align-items: center;
+  /* ให้ช่องใส่ข้อมูลอยู่ในแนวตั้งที่เท่ากัน */
+  gap: 10px;
+  /* ปรับช่องว่างระหว่างช่องใส่ข้อมูล */
+}
+
+.form-row-1 {
+  margin-top: -12px;
+  width: 150%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* เริ่มจากด้านซ้าย หากต้องการจัดเรียงแนวนอน */
+  align-items: center;
+  /* ให้ช่องใส่ข้อมูลอยู่ในแนวตั้งที่เท่ากัน */
+  gap: 10px;
+  /* ปรับช่องว่างระหว่างช่องใส่ข้อมูล */
+}
+
+.form-row-2 {
+  margin-top: 12px;
+
+
+
+
+
+}
+
+/* ปรับขนาดของช่องใส่ข้อมูลแต่ละช่อง */
+.input_1.short {
+  border: 2px solid #000;
+  width: 23%;
+  /* ช่องใส่ข้อมูลมีความกว้างน้อย */
+
+}
+
+.input_1 {
+  border: 2px solid #000;
+
+
+}
+
+.input_1_1 {
+  border: 2px solid #000;
+
+  margin-left: -45px;
+  margin-top: 55px;
+
+}
+
+.input_2.short {
+
+  width: 23%;
+  /* ช่องใส่ข้อมูลมีความกว้างน้อย */
+
+}
+
+.input_1.long {
+  width: 50%;
+  /* ช่องใส่ข้อมูลยาวครอบคลุมความกว้างของตัวบรรจุ */
+}
+
+/* ถ้าต้องการเพิ่มช่องว่างด้านขวาเฉพาะช่องใส่ข้อมูลที่อยู่ด้านซ้าย */
+.input_1.margin-right {
+  margin-right: 10px;
+  /* เพิ่มช่องว่างด้านขวา */
+}
+
+.text-danger {
+  color: red;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  /* ทำให้ข้อความและช่องใส่ข้อมูลอยู่ในแนวเดียวกัน */
+  justify-content: space-between;
+  /* แบ่งช่องว่างระหว่างข้อความและช่องใส่ข้อมูล */
+  margin-bottom: -3px;
+  /* กำหนดช่องว่างด้านล่างของกลุ่ม */
+}
+
+.input-label {
+  flex: 1;
+  /* ให้ข้อความใช้พื้นที่ตามความจำเป็น */
+  margin-right: 10px;
+  /* ช่องว่างระหว่างข้อความและช่องใส่ข้อมูล */
+}
+
+.input_1.short {
+  flex: 0 0 auto;
+  /* ไม่ให้ช่องใส่ข้อมูลยืดหรือหดตัว */
+  text-align: right;
+}
+
+
+.monthvta {
+  display: flex;
+
+
+}
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+ 
+  
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 4px; 
+}
+
+.step .circle {
+  background-color: #fff;
+  color: #000;
+}
+
+.step.active .circle {
+  background-color: #000;
+  color: #fff;
+}
+
+.title {
+  color: #000;
+  font-size: 14px;
+}
+
+.connector {
+  background-color: #d0d0d0; 
+  height: 1px;
+  flex-grow: 0.2;
+  margin: 0 8px; 
+}
